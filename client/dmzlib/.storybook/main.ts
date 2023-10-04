@@ -1,21 +1,17 @@
+import type { StorybookConfig } from '@storybook/nextjs';
 import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { join, dirname } from 'path';
+import path from 'path';
 
-function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
-
-const config = {
+const config: StorybookConfig = {
   stories: ['../**/*.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-onboarding'),
-    getAbsolutePath('@storybook/addon-interactions'),
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/nextjs'),
+    name: '@storybook/nextjs',
     options: {},
   },
   docs: {
@@ -52,7 +48,6 @@ const config = {
         },
       ],
     });
-
     config.resolve.alias = {
       ...config.resolve.alias,
       '@/*': path.resolve(__dirname, '..'),
@@ -63,9 +58,7 @@ const config = {
       '#/constants': path.resolve(__dirname, '../_lib/constants'),
       '#/*': path.resolve(__dirname, '../_lib'),
     };
-
     return config;
   },
 };
-
 export default config;
