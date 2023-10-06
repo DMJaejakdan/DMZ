@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: ${RDS_DB_URL}
+    username: ${RDS_DB_USERNAME}
+    password: ${RDS_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# 테스트 환경에서만 쓰는거라 삭제합니당
+#  jpa:
+#    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
