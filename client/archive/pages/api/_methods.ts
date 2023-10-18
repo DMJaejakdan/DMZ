@@ -4,7 +4,7 @@ export async function AC(type: string, input: string) {
   return data;
 }
 
-export async function CS(queries: {}) {
+export async function MS(queries: {}) {
   //k:v 쌍으로 있는 쿼리들을 쿼리 스트링으로 풀어줌
   const string = Object.entries(queries)
     .filter(
@@ -12,7 +12,19 @@ export async function CS(queries: {}) {
     )
     .map(([key, value]) => `${key}=${value}`)
     .join('&');
-  const url = `${process.env.NEXT_PUBLIC_ROOT}/dmzarchive/api/contentSearch?${string}`;
+  const url = `${process.env.NEXT_PUBLIC_ROOT}/dmzarchive/api/movieSearch?${string}`;
+  const data = await fetch(url).then(res => res.json());
+  return data;
+}
+export async function DS(queries: {}) {
+  //k:v 쌍으로 있는 쿼리들을 쿼리 스트링으로 풀어줌
+  const string = Object.entries(queries)
+    .filter(
+      ([_, value]) => value !== undefined && value !== null && value !== ''
+    )
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
+  const url = `${process.env.NEXT_PUBLIC_ROOT}/dmzarchive/api/dramaSearch?${string}`;
   const data = await fetch(url).then(res => res.json());
   return data;
 }

@@ -13,12 +13,23 @@ export const container = style({
   height: '100vh',
 });
 export const item = style({
+  backgroundColor: '#FAFAFF',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
   height: '100%',
 });
+export const item_black = style({
+  backgroundColor: '#101015',
+  color: '#FAFAFF',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '100%',
+});
+
 const ptb = 'pretendard Bold';
 globalFontFace(ptb, {
   src: 'url(/dmzlib/fonts/Pretendard-Bold.subset.woff)',
