@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb';
 
 export async function getInitialGraph() {
   const client = await MongoClient.connect(
-    'mongodb://root:ssafy.j9a602.dmz@j9a602.p.ssafy.io:27017'
+    process.env.NEXT_PUBLIC_MONGO as string
   );
   const db = client.db('DMZ');
   const edgeCollection = db.collection('edge');
@@ -47,7 +47,7 @@ export async function getInitialGraph() {
 
 export async function addGraph(vertexId: number) {
   const client = await MongoClient.connect(
-    'mongodb://root:ssafy.j9a602.dmz@j9a602.p.ssafy.io:27017'
+    process.env.NEXT_PUBLIC_MONGO as string
   );
   const db = client.db('DMZ');
   const edgeCollection = db.collection('edge');
